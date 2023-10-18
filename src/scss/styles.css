@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif, FontAwesome;
+}
+
+span {
+  cursor: default;
+}
+
+.cards-container, .qr-options, #qr-code, .read-qr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards-container {
+  min-height: 100vh;
+  width: 100vw;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 1em;
+  text-align: center;
+  background-color: #1B1B1E;
+  /* Card Global Styles */
+}
+.cards-container .cards {
+  width: 400px;
+  height: 528px;
+  padding: 1em;
+  border-radius: 10px;
+  margin-inline: 30px;
+  background-color: #D8DBE2;
+  box-shadow: 0px 0px 5px 5px rgba(88, 164, 176, 0.7);
+  /* QR Generator */
+  /* Cards Body Global Styles */
+  /* Scanner */
+}
+.cards-container .cards #title-info {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.cards-container .cards #title-info img {
+  width: 18px;
+  margin: 0 0 5px 5px;
+}
+.cards-container .cards #qr-code, .cards-container .cards .read-qr { /* Generator - Reader Global Style */
+  width: 100%;
+  height: 300px;
+  padding: 0.5rem;
+  margin-top: 10px;
+  border-radius: 5px 5px 0 0;
+  background-color: #A9BCD0;
+  border: 1px solid #373F51;
+}
+.cards-container .cards #qr-code img, .cards-container .cards #qr-code canvas {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+.cards-container .cards #qr-code img {
+  cursor: help;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #373F51;
+}
+.cards-container .cards #qr-code .span-text {
+  position: absolute;
+}
+.cards-container .cards .card-body {
+  padding: 0.5rem;
+  border-radius: 0 0 5px 5px;
+  background-color: #373F51;
+  /* QR Generator Options */
+  /* QR Generator Buttons */
+}
+.cards-container .cards .card-body .qr-url-text {
+  margin: 10px 0;
+}
+.cards-container .cards .card-body .qr-url-text span {
+  background-color: #A9BCD0;
+}
+.cards-container .cards .card-body .qr-url-text input {
+  font-size: 16px;
+}
+.cards-container .cards .card-body .qr-url-text input::-moz-placeholder {
+  font-size: 12px;
+}
+.cards-container .cards .card-body .qr-url-text input::placeholder {
+  font-size: 12px;
+}
+.cards-container .cards .card-body .qr-scanner { /* QR Scanner Input Text */ }
+.cards-container .cards .card-body .qr-scanner input {
+  cursor: copy;
+}
+.cards-container .cards .card-body .qr-scanner input::-moz-placeholder {
+  font-size: 16px;
+}
+.cards-container .cards .card-body .qr-scanner input::placeholder {
+  font-size: 16px;
+}
+.cards-container .cards .card-body #scann-body-title {
+  font-size: 14px;
+  padding: 0.5rem;
+  color: white;
+  width: 100%;
+  display: inline-block;
+}
+.cards-container .cards .card-body .qr-options { /* Solid Icon */ }
+.cards-container .cards .card-body .qr-options span {
+  background-color: #A9BCD0;
+}
+.cards-container .cards .card-body .qr-options select, .cards-container .cards .card-body .qr-options input {
+  height: auto;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
+.cards-container .cards .card-body .qr-options:nth-child(2) > div, .cards-container .cards .card-body .qr-options:nth-child(3) > div, .cards-container .cards .card-body .qr-options input[type=color] {
+  width: 50%;
+  justify-content: end;
+}
+.cards-container .cards .card-body .qr-options input[type=color] {
+  border: 1px solid white;
+  transition: 0.25s;
+}
+.cards-container .cards .card-body .qr-options input[type=color]:hover {
+  opacity: 0.5;
+}
+.cards-container .cards .card-body .qr-options select {
+  width: 100px;
+  transition: 0.25s;
+  font-size: 12px;
+  text-align: center;
+  background-color: white;
+}
+.cards-container .cards .card-body .qr-options select:hover {
+  opacity: 0.85;
+}
+.cards-container .cards .card-body .qr-options .fa-solid {
+  line-height: 1.5 !important;
+}
+.cards-container .cards .card-body #btn-download, .cards-container .cards .card-body #btn-clear-qr, .cards-container .cards .card-body #btn-copy, .cards-container .cards .card-body #btn-clear-scan {
+  font-size: 14px;
+  margin-top: 15px;
+  margin-inline: 20px;
+}
+.cards-container .cards .read-qr {
+  cursor: pointer;
+  transition: 0.25s;
+}
+.cards-container .cards .read-qr:hover {
+  box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+}
+.cards-container .cards .read-qr img {
+  max-width: 100%;
+  max-height: 100%;
+  display: none;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #373F51;
+}
+.cards-container .cards.active .uploaded-qr {
+  display: none;
+}
+.cards-container .cards.active .read-qr img {
+  display: block;
+}
+
+@media screen and (max-width: 1024px) {
+  .cards {
+    margin-inline: 0;
+    margin: 15px 0;
+  }
+}/*# sourceMappingURL=styles.css.map */
