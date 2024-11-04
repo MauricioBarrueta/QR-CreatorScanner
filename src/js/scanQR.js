@@ -4,13 +4,14 @@ const inputFile = document.getElementById('upload-qr'), uploadStatus = document.
 const copyUrlBtn = document.getElementById('btn-copy'), clearContent = document.getElementById('btn-clear-scan')
 
 /* Se hace la petición a la api obteniendo la información del código QR cargado */
-const apiURL = 'http://api.qrserver.com/v1/read-qr-code/'
+const apiURL = 'https://api.qrserver.com/v1/read-qr-code/'
 const fetchQrCodeData = (file, qrFileData) => {
     uploadStatus.innerText = 'Escaneando código...';
     fetch(apiURL, { method: 'POST', body: qrFileData })
         .then(res => res.json())
         .then(data => {
             data = data[0].symbol[0].data;
+            console.log(data)
             uploadStatus.innerText = data ? 'Da clic acá para cargar un archivo:' : 'Error al cargar archivo'
             if(data) {
                 uploadedQrContent.value = data;

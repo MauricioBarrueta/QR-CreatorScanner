@@ -20,7 +20,7 @@ span {
   min-height: 100vh;
   width: 100vw;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
   padding: 1em;
   text-align: center;
   background-color: #1B1B1E;
@@ -28,7 +28,7 @@ span {
 }
 .cards-container .cards {
   width: 400px;
-  height: 528px;
+  height: 528.5px;
   padding: 1em;
   border-radius: 10px;
   margin-inline: 30px;
@@ -44,7 +44,7 @@ span {
   text-transform: uppercase;
 }
 .cards-container .cards #title-info img {
-  width: 18px;
+  width: 20px;
   margin: 0 0 5px 5px;
 }
 .cards-container .cards #qr-code, .cards-container .cards .read-qr { /* Generator - Reader Global Style */
@@ -54,7 +54,14 @@ span {
   margin-top: 10px;
   border-radius: 5px 5px 0 0;
   background-color: #A9BCD0;
-  border: 1px solid #373F51;
+  border: 2px solid #373F51;
+}
+.cards-container .cards #qr-code {
+  flex-wrap: wrap;
+  align-content: center;
+}
+.cards-container .cards #qr-code i {
+  width: 100%;
 }
 .cards-container .cards #qr-code img, .cards-container .cards #qr-code canvas {
   max-width: 100% !important;
@@ -83,30 +90,25 @@ span {
   background-color: #A9BCD0;
 }
 .cards-container .cards .card-body .qr-url-text input {
-  font-size: 16px;
+  font-size: 14px;
 }
 .cards-container .cards .card-body .qr-url-text input::-moz-placeholder {
-  font-size: 12px;
+  font-size: 11px;
 }
 .cards-container .cards .card-body .qr-url-text input::placeholder {
-  font-size: 12px;
+  font-size: 11px;
 }
-.cards-container .cards .card-body .qr-scanner { /* QR Scanner Input Text */ }
+.cards-container .cards .card-body .qr-scanner { /* QR Scanner Input Text */
+  margin: 0;
+}
 .cards-container .cards .card-body .qr-scanner input {
   cursor: copy;
 }
 .cards-container .cards .card-body .qr-scanner input::-moz-placeholder {
-  font-size: 16px;
+  font-size: 11px;
 }
 .cards-container .cards .card-body .qr-scanner input::placeholder {
-  font-size: 16px;
-}
-.cards-container .cards .card-body #scann-body-title {
-  font-size: 14px;
-  padding: 0.5rem;
-  color: white;
-  width: 100%;
-  display: inline-block;
+  font-size: 11px;
 }
 .cards-container .cards .card-body .qr-options { /* Solid Icon */ }
 .cards-container .cards .card-body .qr-options span {
@@ -126,7 +128,7 @@ span {
   transition: 0.25s;
 }
 .cards-container .cards .card-body .qr-options input[type=color]:hover {
-  opacity: 0.5;
+  opacity: 0.85;
 }
 .cards-container .cards .card-body .qr-options select {
   width: 100px;
@@ -141,10 +143,18 @@ span {
 .cards-container .cards .card-body .qr-options .fa-solid {
   line-height: 1.5 !important;
 }
+.cards-container .cards .card-body #uploaded-qr-text::-moz-selection {
+  background-color: #373F51;
+  color: #FFF;
+}
+.cards-container .cards .card-body #uploaded-qr-text::selection {
+  background-color: #373F51;
+  color: #FFF;
+}
 .cards-container .cards .card-body #btn-download, .cards-container .cards .card-body #btn-clear-qr, .cards-container .cards .card-body #btn-copy, .cards-container .cards .card-body #btn-clear-scan {
-  font-size: 14px;
-  margin-top: 15px;
-  margin-inline: 20px;
+  font-size: 16px;
+  margin-top: 10px;
+  border: 1px solid #A9BCD0;
 }
 .cards-container .cards .read-qr {
   cursor: pointer;
