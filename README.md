@@ -5,4 +5,4 @@
 🔗 https://mauriciobarrueta.github.io/QR-CreatorScanner/
    
 
-![qrCreatorScanner](https://github.com/MauricioBarrueta/QR-CreatorScanner/assets/60496232/57b4503d-34f6-48a3-bc5c-6acd41283a8c)
+![qrCreatorScanner](https://github.com/user-attachments/assets/03d66264-529d-46c0-b955-f26816e08dfb)
