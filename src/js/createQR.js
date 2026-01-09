@@ -6,12 +6,13 @@ const scannerQrUrlText = document.querySelector('#uploaded-qr-text') // Scanner
 
 const resetValues = () => {
     qrSize.selectedIndex = 2
-    qrUrl.value = ''
+    qrUrl.value = '', scannerQrUrlText.value = ''
     qrUrl.focus()
-    qrColor.value = '#000000'
-    qrBgColor.value = '#ffffff'
-    downloadQrButton.style.pointerEvents = 'none'
-    scannerQrUrlText.value = ''
+    qrColor.value = '#000',  qrBgColor.value = '#FFF'
+    downloadQrButton.classList.add('disabled')    
+
+    /* Scanner */
+    copyUrlBtn.classList.add('disabled')
 }
 
 window.onload = () => { resetValues() }
@@ -44,9 +45,9 @@ qrUrl.addEventListener('input', (textValue) => {
     if(text.length === 0) {
         const spanText = document.createElement('span')
         spanText.classList.add('span-text')
-        spanText.textContent = '\u{F029} Tu código QR se mostrará aquí \u{F029}'
+        spanText.textContent = 'El código se mostrará aquí'
         generatedQrContainer.appendChild(spanText)
-        downloadQrButton.style.pointerEvents = 'none'
+        downloadQrButton.classList.add('disabled')
     } 
 })
 
@@ -54,7 +55,7 @@ qrUrl.addEventListener('input', (textValue) => {
 var qrcode
 async function generateQrCode() {
     generatedQrContainer.innerHTML = ''
-    downloadQrButton.style.pointerEvents = 'visible'
+    downloadQrButton.classList.remove('disabled')
     qrcode = new QRCode("qr-code", {
         text,
         height: defSize,
@@ -70,14 +71,14 @@ async function generateQrCode() {
 function qrUrlToFile() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            const img = document.querySelector('#qr-code img');
+            const img = document.querySelector('#qr-code img')
             if (img.currentSrc) {
-                resolve(img.currentSrc);
+                resolve(img.currentSrc)
                 img.style.backgroundColor = 'white'                
-                return;
+                return
             }
-            const canvas = document.querySelector('canvas');            
-            resolve(canvas.toDataURL());
+            const canvas = document.querySelector('canvas')            
+            resolve(canvas.toDataURL())
         }, 50);
     });
 }

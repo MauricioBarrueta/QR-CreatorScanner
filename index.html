@@ -5,76 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
     <link rel="stylesheet" href="src/scss/styles.css">
     <title>Generador y lector de QR</title>
     <link rel="icon" type="image/x-icon" href="src/img/favicon.ico">
 </head>
 <body>
-    <div class="cards-container">         
+    <div class="cards-container">     
+
+        <!-- Generate -->
         <div class="cards">
-            <span id="title-info"><img src="https://api.iconify.design/material-symbols:qr-code.svg?color=%23000000">&nbsp; Crea el código QR acá:</span>
+            <span id="title-info"><i class="fa-solid fa-qrcode"></i>&nbsp; Crear código QR</span>
             <div class="card-img-top" id="qr-code">
-                <i class="fa-solid fa-qrcode fa-bounce"></i>
-                <span>El código generado se mostrará aquí</span>
+                <span>El código se mostrará aquí</span>
             </div>
             <div class="card-body">
                 <div class="qr-url-text">
                     <div class="input-group flex-nowrap">
-                        <span class="input-group-text" id="qr-url" title="Contenido">&#x1F517;</span>
-                        <input type="text" class="form-control" id="qr-text" placeholder="Ingresa el URL, e-mail, teléfono, clave, SMS, etc:" aria-describedby="qr-url">
+                        <span class="input-group-text" id="qr-url" title="Contenido"><i class="fa-solid fa-link"></i></span>
+                        <input type="text" class="form-control" id="qr-text" placeholder="URL, email, clave, teléfono..." aria-describedby="qr-url">
                     </div>
                 </div>
                 <div class="qr-options">
                     <div class="input-group flex-nowrap">
-                        <span class="input-group-text" id="qr-sz" title="Dimensiones">&#xf31e;</span>
-                        <select class="qr-size" aria-describedby="qr-sz" title="Dimensiones">
-                            <option value="76">76x76 px</option>
-                            <option value="152" selected>152x152 px</option>
-                            <option value="177">177x177 px</option>
-                            <option value="240">240x240 px</option>
+                        <span class="input-group-text" id="qr-sz" title="Dimensiones"><i class="fa-solid fa-arrows-up-down-left-right"></i></span>
+                        <select class="qr-size" aria-describedby="qr-sz">
+                            <option value="150">150x150 px</option>
+                            <option value="200">200x200 px</option>
+                            <option value="256" selected>256x256 px</option>
                             <option value="300">300x300 px</option>
+                            <option value="500">500x500 px</option>
                         </select>
                     </div>                    
                     <div class="input-group flex-nowrap">
-                        <span class="input-group-text fa-solid" id="qr-bg" title="Fondo">&#xf03e;</span>
-                        <input type="color" id="qr-bg-color" aria-describedby="qr-bg" value="#ffffff" title="Fondo">
+                        <span class="input-group-text" id="qr-bg" title="Color de fondo"><i class="fa-solid fa-image"></i></span>
+                        <input type="color" id="qr-bg-color" aria-describedby="qr-bg" value="#ffffff">
                     </div>
                     <div class="input-group flex-nowrap">
-                        <span class="input-group-text" id="qr-cl" title="Color">&#xf03e;</span>
-                        <input type="color" id="qr-color" aria-describedby="qr-cl" title="Color">
+                        <span class="input-group-text" id="qr-cl" title="Color del QR"><i class="fa-regular fa-image"></i></span>
+                        <input type="color" id="qr-color" aria-describedby="qr-cl">
                     </div>                    
                 </div>
-                <a class="btn btn-success" id="btn-download" download="QRCode" title="Guardar">&#xf0c7;</a>
-                <button class="btn btn-danger" id="btn-clear-qr" title="Restablecer">&#xf2ea;</button>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a class="btn btn-success" id="btn-download" download="QRCode" title="Guardar">&#xf0c7;&nbsp; Guardar</a>
+                    <button class="btn btn-danger" id="btn-clear-qr" title="Restablecer">&#xf2ed;&nbsp; Borrar</button>
+                </div>                
             </div>
         </div> 
 
+        <!-- Scanner -->
         <div class="cards scanner">
-            <span id="title-info"><img src="https://api.iconify.design/material-symbols:qr-code-scanner.svg?color=%23000000">&nbsp; Escanea el código QR acá:</span>
-            <form action="#" class="card-img-top read-qr" style="height: 357px;">
+            <span id="title-info"><i class="fa-solid fa-camera"></i>&nbsp; Escanear código QR</span>
+            <form action="#" class="card-img-top read-qr">
                 <input type="file" id="upload-qr" accept="image/png, image/jpeg" hidden>
                 <img src="">
                 <div class="uploaded-qr">
-                    <i class="fa-solid fa-arrow-up-from-bracket fa-bounce"></i>                    
-                    <p id="upload-status">Da clic para cargar una imagen:</p>
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                    <span id="upload-status">Sube el código para escanear</span>
                 </div>
             </form>
             <div class="card-body">
                 <div class="qr-url-text qr-scanner">
                     <div class="input-group flex-nowrap">
-                        <span class="input-group-text" id="qr-url">&#xf0c1;</span>
-                        <input type="text" class="form-control" id="uploaded-qr-text" placeholder="La información del código QR se mostrará aquí:" aria-describedby="qr-url" readonly>
+                        <span class="input-group-text" id="qr-url" title="Contenido"><i class="fa-solid fa-file-lines"></i></span>
+                        <input type="text" class="form-control" id="uploaded-qr-text" placeholder="Contenido del código" aria-describedby="qr-url" readonly>
                     </div>
                 </div>                
-                <a class="btn btn-success" id="btn-copy" title="Copiar">&#xf0c5;</a>
-                <button class="btn btn-danger" id="btn-clear-scan" title="Nueva">&#xe0d8;</button>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a class="btn btn-success" id="btn-copy" title="Copiar">&#xf0c5;&nbsp; Copiar</a>
+                    <button class="btn btn-danger" id="btn-clear-scan" title="Nueva">&#xf021;&nbsp; Cambiar</button>
+                </div>                
             </div>
         </div>        
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
     <script src="src/js/createQR.js"></script>
     <script src="src/js/scanQR.js"></script>
