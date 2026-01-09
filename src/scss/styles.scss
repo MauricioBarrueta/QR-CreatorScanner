@@ -9,14 +9,14 @@ span { cursor: default; }
 
 .cards-container, .qr-options, #qr-code, .read-qr { display: flex; align-items: center; justify-content: center; }
 .cards-container {
-    min-height: 100vh; width: 100vw; flex-wrap: wrap; gap: 10px; 
+    min-height: 100vh; width: 100vw; flex-wrap: wrap; gap: 75px; 
     padding: 1em; text-align: center;
     background-color: #1B1B1E;
 
     /* Card Global Styles */
     .cards {      
-        width: 400px; height: 528.5px;  
-        padding: 1em; border-radius: 10px; margin-inline: 30px;
+        width: 400px; height: 528.5px; 
+        padding: 1em; border-radius: 10px; //margin-inline: 30px;
         background-color: #D8DBE2; box-shadow: 0px 0px 5px 5px rgba(88,164,176,0.7);      
         #title-info {
             font-size: 14px; font-weight: bold; text-transform: uppercase;
@@ -26,11 +26,15 @@ span { cursor: default; }
             width: 100%; height: 300px;
             padding: 0.5rem; margin-top: 10px; border-radius: 5px 5px 0 0;  
             background-color: #A9BCD0; border: 2px solid #373F51;
+            span { 
+                font-size: 14px; letter-spacing: 1px;
+                color: #1B1B1E; opacity: .5;
+            }
         }
+
         /* QR Generator */
         #qr-code {
             flex-wrap: wrap; align-content: center;
-            i { width: 100%; }
             img, canvas { max-width: 100% !important; max-height: 100% !important; }
             img { 
                 cursor: help; padding: 0.5rem; 
@@ -38,58 +42,68 @@ span { cursor: default; }
             }
             .span-text { position: absolute; }
         }        
-        /* Cards Body Global Styles */
+
         .card-body { 
             padding: 0.5rem; border-radius: 0 0 5px 5px;
             background-color: #373F51;
+
             .qr-url-text {
                 margin: 10px 0;
-                span { background-color: #A9BCD0; }
-                input {
-                    font-size: 14px;
-                    &::placeholder { font-size: 11px; }
+                border: 0;
+                .input-group {
+                    height: 40px;
+                    input { 
+                        font-size: 14px; 
+                        &::placeholder { opacity: .5; }
+                    }
                 }
+            }   
+            .input-group-text {
+                background-color: #A9BCD0; border: 0;
+                cursor: help;
             }
-            .qr-scanner { /* QR Scanner Input Text */
-                margin: 0;
-                input {      
-                    cursor: copy;                                 
-                    &::placeholder { font-size: 11px; }
-                }
-            }            
             /* QR Generator Options */
             .qr-options {
-                span { background-color: #A9BCD0; }             
-                select, input {                    
-                    height: auto; cursor: pointer;
-                    border-radius: 0 5px 5px 0;
-                }
-                &:nth-child(2)>div, &:nth-child(3)>div, input[type=color] { 
-                    width: 50%; justify-content: end;
-                }
-                input[type = color] {
-                    border: 1px solid white; transition: 0.25s;
-                    &:hover { opacity: .85; }
-                }
-                select {
-                    width: 100px; transition: 0.25s;
-                    font-size: 12px; text-align: center;
-                    background-color: white;
-                    &:hover { opacity: .85; }
-                }
-                .fa-solid { line-height: 1.5 !important; } /* Solid Icon */
+                gap: 5px;
+                .input-group { 
+                    height: 40px;
+                    border: 0; border-radius: var(--bs-border-radius); 
+                    input[type=color], select { 
+                        border-top-right-radius: var(--bs-border-radius); border-bottom-right-radius: var(--bs-border-radius);
+                        cursor: pointer; transition: .25s;
+                        &:hover { opacity: .85; }
+                    }
+                    select {
+                        width: 100%;
+                        font-size: 12px; text-align: center; 
+                        background-color: white; border: 0; appearance: none; 
+                    }
+                    input[type=color] {
+                        width: 100%; height: 100%;
+                        border: 0; 
+                    }
+                }               
             }   
-            #uploaded-qr-text {
-                &::selection { background-color: #373F51; color: #FFF; }
-            }              
-            /* QR Generator Buttons */
-            #btn-download, #btn-clear-qr, #btn-copy, #btn-clear-scan {
-                font-size: 16px;
-                margin-top: 10px; border: 1px solid #A9BCD0;
-            } 
-        }
-        /* Scanner */
+
+            .btn-group {
+                width: 100%; gap: 5px;
+                margin-top: 10px;
+                .btn {
+                    border: 1px solid #A9BCD0;
+                    font-size: 15px;
+                }
+                #btn-download.disabled { opacity: .5; }     
+            }   
+        }               
+    }
+
+    .scanner {
+        #uploaded-qr-text {
+            cursor: copy; 
+             &::selection { background-color: #373F51; color: #FFF; }
+        } 
         .read-qr {   
+            height: 69%;
             cursor: pointer; transition: 0.25s;
             &:hover {
                 box-shadow: inset 0px 0px 10px 5px rgba(0,0,0,0.5);
@@ -98,20 +112,20 @@ span { cursor: default; }
                 max-width: 100%; max-height: 100%; display: none;      
                 background-color: white; padding: 0.5rem;
                 border-radius: 5px; border: 1px solid #373F51;          
-            }            
+            }       
+            .uploaded-qr {
+                i { 
+                    width: 100%; 
+                    font-size: 14px;
+                    margin-bottom: 5px; opacity: .5;
+                }
+            }     
         }
-    }
+    } 
     .cards.active {
         .uploaded-qr { display: none; }
         .read-qr {
             img { display: block; }
         }
     }
-}
-
-@media screen and (max-width: 1024px) {
-    .cards {        
-        height: fit-content !important;
-        margin-inline: 0 !important; margin: 15px 0;
-    }    
 }
