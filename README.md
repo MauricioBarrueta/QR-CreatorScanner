@@ -4,4 +4,5 @@
 
 🔗 https://mauriciobarrueta.github.io/QR-CreatorScanner/   
 
-![qr](https://github.com/user-attachments/assets/1b27f22c-175e-4f96-8e4c-585d33564b31)
+
+<img width="1366" height="653" alt="qr" src="https://github.com/user-attachments/assets/ffa66a67-dfb7-4acf-b3cc-2ff7aaa8bbbc" />
